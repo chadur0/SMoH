@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <nav class="nav-bar">
+  <a href="/" class="nav-button">SMoH</a>
+  <a href="/archive" class="nav-button">Archive of Holding</a>
+  <a href="/about" class="nav-button">About</a>
+  </nav>
+
+  <h1>About the SMoH</h1>
+    <p style="text-align:center">
+    The SMoH exchanges your magic items for new ones.<br>
+    Select your sacrificial items and Pull the Lever to receive a new treasure.<br><br>
+    The rarity of your prize is determined by the combined rarity of the items you offer. Each rarity tier (common, uncommon, rare, very rare, legendary) has a weighted value, so the more valuable your input, the greater your chances for a higher-tier reward.<br><br>
+    Every spin is <a href="/archive" archive>archived</a>, and you can <a href="/data/archive.csv" download>download</a> the full archive as a CSV.<br>
+  </p>
+
+</body>
+</html>

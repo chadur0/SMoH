@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine of Holding</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="nav-bar">
+    <a href="/" class="nav-button">SMoH</a>
+    <a href="/archive" class="nav-button">Archive of Holding</a>
+    <a href="/about" class="nav-button">About</a>
+    </nav>
+
+    <h1>Slot Machine of Holding</h1>
+
+    <div class="intro">
+        <p>Behold, the Slot Machine of Holding!
+        <br>Select Input Items below, then pull the lever to win a prize.</p>
+        
+        <p>The higher your cumulative Input Item Rarity,
+        <br>the higher your Item Prize Pool.
+        <br>Common: 1,  Uncommon: 5,  Rare: 10,  Very Rare: 50,  Legendary: 100</p>
+
+        <p>The Slot Machine of Holding will randomly select one item from the pool of eligible items based on the cumulative Input Rarity.</p>
+    </div>
+
+    <div class="search-wrapper">
+        <input type="text" id="search" placeholder="Search items..." />
+        <button id="clear-search" title="Clear search">✕</button>
+    </div>
+    
+    <div id="item-list">
+        {% for item in items %}
+        <label>
+            <input type="checkbox" value="{{ item.name }}">
+            {{ item.name }} ({{ item.rarity }})
+        </label>
+        {% endfor %}
+    </div>
+
+    <div class="controls">
+        <button id="lever" class="button">Pull Lever</button>
+        <button id="clear-selection" class="button">Clear</button>
+    </div>
+
+    <h3 id="result-title">You win:</h3>
+    <div id="result"></div>
+
+    <div class="controls">
+        <button id="archive" class="button" onclick="location.href='/archive'">Archive of Holding</button>
+    </div>  
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive of Holding</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <nav class="nav-bar">
+  <a href="/" class="nav-button">SMoH</a>
+  <a href="/archive" class="nav-button">Archive of Holding</a>
+  <a href="/about" class="nav-button">About</a>
+  </nav>
+
+  <h1>Archive of Holding</h1>
+  <p style="text-align:center">Records of treasures won and items lost
+    <br><a href="/data/archive.csv" download>Download Archive (CSV)</a>
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Input Items</th>
+        <th>Prize</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for spin in spins %}
+        <tr>
+          <td>{{ spin.timestamp }}</td>
+          <td>
+            <ul>
+              {% for item in spin.inputs %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+          <td>
+            {{ spin.prize.name }}<br>
+            <small>{{ spin.prize.rarity }}, {{ spin.prize.type }}</small>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
