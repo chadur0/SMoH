@@ -6,7 +6,8 @@ The rarity of your prize is determined by the combined rarity of the items you o
 
 ## Requirements
 ### items.csv
-Needs Input Items Data including 'example', 'example', 'example':
+Needs Input Items Data with headers "name", "type", "rarity". Ex Value: "Adamantine Armor, Armor, uncommon"
+
 ```shellsession
 SMoH/data/items.csv
 ```
