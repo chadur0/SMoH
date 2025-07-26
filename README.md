@@ -25,7 +25,7 @@ python3 app.py
 ```
 
 ## Known Issues
-* 
+* not optimized for mobile
 
 ## To Do:
 * Add "Current Input Rarity Score" - cumulative score of input items
