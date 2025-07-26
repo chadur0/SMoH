@@ -28,4 +28,6 @@ python3 app.py
 * 
 
 ## To Do:
-* Add "Current Input Rarity Score" and "Prize Bucket" fields
+* Add "Current Input Rarity Score" - cumulative score of input items
+* Add "Prize Bucket" field - currently unlocked prize bucket based on input item rarity score
+* Add "Current Input Item Count"
