@@ -27,4 +27,4 @@ python3 app.py
 * 
 
 ## To Do:
-* 
+* Add "Current Input Rarity Score" and "Prize Bucket" fields
