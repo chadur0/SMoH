@@ -54,10 +54,14 @@ async function triggerSpinAnimation(selectedItems) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const lever = document.getElementById("lever");
+    const leverGraphic = document.getElementById("lever-graphic");
     const result = document.getElementById("result");
     const search = document.getElementById("search");
     const itemList = document.getElementById("item-list");
     const clearSearch = document.getElementById("clear-search");
+    const reel1 = document.getElementById("reel-1");
+    const reel2 = document.getElementById("reel-2");
+    const reel3 = document.getElementById("reel-3");
 
     let itemLabels = Array.from(itemList.querySelectorAll("label"));
 
@@ -162,6 +166,70 @@ document.addEventListener("DOMContentLoaded", () => {
         reorderItems(); // update the order after clearing
     });
     
+    function animateLever() {
+        leverGraphic.classList.add("active");
+        leverGraphic.style.transform = "translateY(20px) scaleY(0.9)";
+        setTimeout(() => {
+            leverGraphic.classList.remove("active");
+            leverGraphic.style.transform = "";
+        }, 350);
+    }
+
+    async function triggerSlotSpin(selectedItems) {
+        animateLever();
+        // Animate reels spinning
+        const spinDuration = 1800;
+        const spinInterval = 60;
+        let spinPool = [];
+        let spinTimer;
+        let stop = false;
+
+        // Fetch the spinPool and result from backend
+        try {
+            const response = await fetch("/spin", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ selectedItems })
+            });
+            const data = await response.json();
+            if (data.error) {
+                result.textContent = data.error;
+                return;
+            }
+            spinPool = data.spinPool;
+            const prize = data.result;
+
+            // Animate all reels
+            let i = 0;
+            function spinStep() {
+                if (stop) return;
+                reel1.textContent = spinPool[(i + 1) % spinPool.length];
+                reel2.textContent = spinPool[(i + 2) % spinPool.length];
+                reel3.textContent = spinPool[(i + 3) % spinPool.length];
+                i++;
+                spinTimer = setTimeout(spinStep, spinInterval);
+            }
+            spinStep();
+
+            setTimeout(() => {
+                stop = true;
+                clearTimeout(spinTimer);
+                // Show result in center reel, random in others
+                reel1.textContent = spinPool[Math.floor(Math.random() * spinPool.length)];
+                reel2.textContent = `${prize.name} (${prize.rarity})`;
+                reel3.textContent = spinPool[Math.floor(Math.random() * spinPool.length)];
+                // Also update the result area
+                result.textContent = `${prize.name} (${prize.rarity})`;
+                // Clear checkboxes
+                document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
+                reorderItems();
+            }, spinDuration);
+        } catch (err) {
+            result.textContent = "Spin failed. Check console.";
+            console.error(err);
+        }
+    }
+
     lever.addEventListener("click", () => {
         const checkboxes = itemList.querySelectorAll("input[type='checkbox']");
         const selectedItems = Array.from(checkboxes)
@@ -172,8 +240,11 @@ document.addEventListener("DOMContentLoaded", () => {
             result.textContent = "Select at least one item!";
             return;
         }
+        triggerSlotSpin(selectedItems);
+    });
 
-        triggerSpinAnimation(selectedItems);
+    leverGraphic.addEventListener("click", () => {
+        lever.click(); // Sync lever graphic with main lever button
     });
 
 

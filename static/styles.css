@@ -1,11 +1,99 @@
 body {
-    font-family: "Gill Sans", sans-serif;
-    background: #fff;
-    color: #000;
-    max-width: 500px;
-    margin: auto;
-    padding-top: 1rem;
-    padding-bottom: 3rem;
+    font-family: 'Orbitron', 'Press Start 2P', Arial, sans-serif;
+    background: radial-gradient(ellipse at center, #222 0%, #000 100%);
+    color: #fff;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.slot-machine-frame {
+    background: linear-gradient(135deg, #111 60%, #333 100%);
+    border: 6px solid #FFD700;
+    border-radius: 32px;
+    box-shadow: 0 0 40px 10px #0ff, 0 0 0 8px #222 inset;
+    padding: 2.5rem 2rem 2rem 2rem;
+    margin-top: 2rem;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+}
+
+.slot-machine-header h1 {
+    font-family: 'Press Start 2P', 'Orbitron', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: #FFD700;
+    text-shadow: 0 0 8px #f0f, 0 0 16px #0ff, 2px 2px 0 #000;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.slot-machine-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slot-machine-lever {
+    position: absolute;
+    right: -60px;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#lever-graphic {
+    width: 32px;
+    height: 120px;
+    background: linear-gradient(180deg, #FFD700 0%, #B8860B 100%);
+    border: 3px solid #fff;
+    border-radius: 16px;
+    box-shadow: 0 0 16px #FFD700, 0 0 4px #fff inset;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: transform 0.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+#lever-graphic:active {
+    transform: translateY(20px) scaleY(0.9);
+    box-shadow: 0 0 32px #f00, 0 0 8px #fff inset;
+}
+
+.slot-machine-reels {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0 1.5rem 0;
+}
+
+.reel-window {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(180deg, #222 60%, #444 100%);
+    border: 4px solid #0ff;
+    border-radius: 16px;
+    box-shadow: 0 0 16px #0ff, 0 0 4px #fff inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', 'Press Start 2P', Arial, sans-serif;
+    font-size: 1.1rem;
+    color: #fff;
+    text-shadow: 0 0 8px #0ff, 0 0 2px #fff;
+    overflow: hidden;
+    transition: background 0.3s, border 0.3s;
+}
+
+.slot-machine-controls {
+    width: 100%;
+    margin-top: 1rem;
 }
 
 .button,
@@ -13,50 +101,65 @@ button,
 .nav-button {
     display: inline-block;
     width: 100%;
-    padding: .5em;
-    font-family: "Gill Sans", sans-serif;
-    font-size: 1rem;
-    border: 1.5px solid #000;
-    border-radius: 8px;
-    background-color: black;
-    color: white;
+    padding: .7em 0.5em;
+    font-family: 'Orbitron', 'Press Start 2P', Arial, sans-serif;
+    font-size: 1.1rem;
+    border: 2.5px solid #FFD700;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #f0f 0%, #0ff 100%);
+    color: #fff;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 0 12px #0ff, 0 0 2px #fff inset;
+    margin-bottom: 0.5em;
+    letter-spacing: 1px;
+    transition: background 0.3s, color 0.3s, box-shadow 0.2s;
 }
 
 .button:hover,
 button:hover,
 .nav-button:hover {
-    background-color: white;
-    color: black;
+    background: linear-gradient(90deg, #FFD700 0%, #f0f 100%);
+    color: #222;
+    box-shadow: 0 0 24px #FFD700, 0 0 8px #fff inset;
 }
 
-/* === Nav === */
 .nav-bar {
     display: flex;
     width: 100%;
     padding: 0;
     margin-bottom: 1.5rem;
     gap: 0.5rem;
+    background: linear-gradient(90deg, #0ff 0%, #f0f 100%);
+    border-bottom: 3px solid #FFD700;
+    box-shadow: 0 2px 12px #0ff;
 }
 
 .nav-button {
     flex: 1;
+    font-size: 1rem;
+    border-radius: 0;
+    border: none;
+    background: none;
+    color: #fff;
+    box-shadow: none;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* === Headings and Layout === */
-h1 {
-    text-align: center;
+.nav-button:hover {
+    background: #FFD700;
+    color: #222;
 }
 
 .intro {
     text-align: center;
     margin-bottom: 1.5em;
+    color: #FFD700;
+    font-family: 'Orbitron', 'Press Start 2P', Arial, sans-serif;
+    text-shadow: 0 0 8px #f0f, 0 0 2px #fff;
 }
 
-/* === Search === */
 .search-wrapper {
     position: relative;
     width: 100%;
@@ -68,6 +171,11 @@ h1 {
     padding: 0.5em 2.5em 0.5em 0.5em;
     font-size: 1em;
     font-family: inherit;
+    background: #111;
+    color: #0ff;
+    border: 2px solid #0ff;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #0ff;
 }
 
 #clear-search {
@@ -78,16 +186,16 @@ h1 {
     background: none;
     font-size: 1.2em;
     cursor: pointer;
-    color: #000;
+    color: #FFD700;
     padding: 0;
     line-height: 1;
+    text-shadow: 0 0 8px #FFD700;
 }
 
 #clear-search:focus {
     outline: none;
 }
 
-/* === Item List === */
 #item-list {
     display: block;
     max-height: 250px;
@@ -95,6 +203,10 @@ h1 {
     overflow-y: scroll;
     margin-bottom: 0.25em;
     padding: 0.5em;
+    background: #111;
+    border: 2px solid #0ff;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #0ff;
 }
 
 #item-list label {
@@ -102,37 +214,38 @@ h1 {
     margin-bottom: 0.25em;
     transition: transform 300ms ease, opacity 300ms ease;
     position: relative;
+    color: #fff;
+    font-family: 'Orbitron', 'Press Start 2P', Arial, sans-serif;
+    text-shadow: 0 0 4px #0ff;
 }
 
 input[type="text"] {
     width: 100%;
     padding: 0.5em;
     margin-bottom: 0.25em;
-    border: 1.5px solid #000;
-}
-
-/* === Shared Container Styles === */
-#search,
-#result,
-#item-list {
-    width: 100%;
-    box-sizing: border-box;
-    border: 1.5px solid #000;
+    border: 2px solid #0ff;
+    background: #111;
+    color: #0ff;
     border-radius: 8px;
+    box-shadow: 0 0 8px #0ff;
 }
 
-/* === Result Display === */
 #result {
     margin-top: 1em;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.3em;
     padding: 1em;
     min-height: 3.2em;
-    background: #f9f9f9;
+    background: #111;
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    box-shadow: 0 0 16px #FFD700, 0 0 4px #fff inset;
+    font-family: 'Orbitron', 'Press Start 2P', Arial, sans-serif;
+    text-shadow: 0 0 8px #FFD700, 0 0 2px #fff;
     overflow: hidden;
 }
 
-/* === Lever Controls === */
 .controls {
     display: flex;
     gap: 1rem;
@@ -151,26 +264,32 @@ input[type="text"] {
     flex: 1;
 }
 
-/* === Utility === */
 .blur {
     filter: blur(3px);
     transition: filter 0.3s ease;
 }
 
-/* === Archive === */
+/* Archive Table - Neon Style */
 table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 1em;
+    background: #111;
+    color: #0ff;
+    border: 2px solid #0ff;
+    box-shadow: 0 0 8px #0ff;
 }
 
 th, td {
-    border: 1px solid #000;
+    border: 1px solid #0ff;
     padding: 0.5em;
     text-align: center;
     font-size: medium;
+    font-family: 'Orbitron', 'Press Start 2P', Arial, sans-serif;
 }
 
 th {
-    background-color: #f0f0f0;
+    background-color: #222;
+    color: #FFD700;
+    text-shadow: 0 0 8px #FFD700;
 }
