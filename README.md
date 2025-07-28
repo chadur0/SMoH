@@ -26,8 +26,10 @@ python3 app.py
 
 ## Known Issues
 * not optimized for mobile
+* archive.csv is not set up to accept mult input items causing funky read on archive html
 
 ## To Do:
 * Add "Current Input Rarity Score" - cumulative score of input items
 * Add "Prize Bucket" field - currently unlocked prize bucket based on input item rarity score
 * Add "Current Input Item Count"
+* Add "Jump to Bottom" and "Jump to Top" buttons to Archive page
