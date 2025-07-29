@@ -22,15 +22,18 @@ RARITY_VALUES = {
 }
 
 # Load item data
-def load_items(filename="data/items.csv"):
+def load_items(filename="data/items-5e.csv"):
     items = []
     with open(filename, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             items.append({
-                "name": row["name"],
-                "type": row["type"],
-                "rarity": row["rarity"].lower()
+                "name": row["Name"],
+                "type": row["Type"],
+                "rarity": row["Rarity"].lower(),
+                "source": row["Source"],
+                "page": row["Page"],
+                "text": row["Text"]
             })
     return items
 
