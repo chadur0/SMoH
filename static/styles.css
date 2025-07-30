@@ -59,6 +59,12 @@ h1 {
     margin-bottom: 1.5em;
 }
 
+p, h3 {
+    display: flex;
+    width: 95%;
+    margin-left: 2.5%;
+}
+
 /* === Search === */
 .search-wrapper {
     position: relative;
@@ -75,11 +81,12 @@ h1 {
 
 #clear-search {
     position: absolute;
-    left: 46%;
-    transform: translateY(50%);
+    left: 45%;
+    align-self: center;
+    /* transform: translateY(50%); */
     border: none;
     background: none;
-    font-size: 1.2em;
+    font-size: 1em;
     cursor: pointer;
     color: #000;
     padding: 0;
